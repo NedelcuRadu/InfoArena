@@ -1,27 +1,31 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
-#define MAX 2000010
+#define MAX 2000100
 using namespace std;
-int A[MAX];
 
-void SieveOfErathostene() {
-    for(int i = 1; i < MAX; i++)
+ifstream in("ciur.in");
+ofstream out("ciur.out");
+
+bool A[MAX];
+
+void SieveOfErathostene(long int p) {
+    for(long int i = 1; i <= p; i++)
         A[i] = 1;
-    for(int i = 2; i < sqrt(MAX); i++)
-        if(A[i])
-            for(int j = i * i; j < MAX; j = j + i)
+    for(long int i = 2; i <= sqrt(p); i++)
+        if(A[i]) {
+            for(long int j = i * i; j <= p; j = j + i)
                 A[j] = 0;
-
+        }
 }
 
 int main() {
-    int n, k = 0;
-    cin >> n;
-    SieveOfErathostene();
+    long int n, k = 0;
+    in >> n;
+    SieveOfErathostene(n);
     for(int i = 2; i <= n; i++)
         if(A[i])
             k++;
-    cout << k;
+    out << k;
     return 0;
 }
