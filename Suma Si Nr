@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+#include <cmath>
+using namespace std;
+#define MAX 1000000
+#define MOD 9973
+bool A[MAX];
+int t;
+long long int N;
+
+void ciur() {
+    for(long int i=2; i<MAX; i++)
+        A[i]=1;
+    for(long int i=2; i<sqrt(MAX); i++)
+        if(A[i])
+            for(long int j=i*i; j<MAX; j=j+i)
+                A[j]=0;
+
+}
+
+void solve(long long int N) {long int nr=1;
+    for(int i=2; i<=sqrt(N); i++)
+        if(A[i]) {int k=0;
+            while(N%i==0) {
+                N=N/i;
+                k++;
+            }
+S=(S+pow(i,k+1)/(i+1))%MOD;
+nr=nr*(k+1);
+        }
+}
+
+int main() {
+    ciur();
+    for(in>>t; t; t--) {
+        in>>N;
+        solve(N);
+    }
+
+    return 0;
+}
