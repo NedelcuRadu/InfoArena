@@ -1,0 +1,89 @@
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#define MOD 9973
+#define MAX 1000000
+using namespace std;
+ifstream in("ssnd.in");
+ofstream out("ssnd.out");
+
+
+
+void sieve(bool A[]) {
+    A[1] = 0;
+    for(int i = 2; i <= MAX; i++)
+        A[i] = 1;
+    for(long long int i = 2; i*i <= MAX; i++)
+        if(A[i])
+            for(long long int j = i * i; j <= MAX; j = j + i)
+                A[j] = 0;
+}
+
+long long int exp(long long int x, long long int y) {
+    long long int z = 1;
+    while(y > 1) {
+        if(y % 2 == 0) {
+            y = y / 2;
+            x = x * x;
+        } else {
+            z = z * x;
+            y = (y - 1) / 2;
+            x = x * x;
+        }
+    }
+    return x * z;
+}
+
+void solve(long long int n, bool A[]) {
+    int S = 1;
+    int nr = 1;
+    int k = 0;
+    long long i = 2;
+
+    while(n > 1) {
+
+        if(A[i]) {
+            while(n % i == 0) {
+                n = n / i;
+                k++;
+            }
+            if(k != 0) {
+                //long long int p = round(pow(i, k + 1));
+                S = S * (exp(i, k + 1) - 1) / (i - 1) % MOD;
+                nr = nr * (k + 1);
+                k = 0;
+            }
+
+            if(n <= MAX) {
+                if(A[n]) {
+                    // long long int p = round(pow(n, 2));
+                    S = S * (exp(n, 2) - 1) / (n - 1) % MOD;
+                    nr = nr * 2;
+                    n = 1;
+                }
+            }
+        }
+        i++;
+    }
+
+    if(nr == 1)
+        out << 2 << " " << (n + 1) % MOD << '\n';
+    else
+        out << nr << " " << S << '\n';
+
+
+}
+
+int main() {
+    bool A[MAX];
+    int t;
+    long long int n;
+    sieve(A);
+    in >> t;
+    for(int i = 1; i <= t; i++) {
+        in >> n;
+        solve(n, A);
+    }
+
+    return 0;
+}
