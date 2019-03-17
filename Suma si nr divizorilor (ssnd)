@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <cmath>
 #define MOD 9973
 #define MAX 1000000
 using namespace std;
@@ -13,7 +12,7 @@ void sieve(bool A[]) {
     A[1] = 0;
     for(int i = 2; i <= MAX; i++)
         A[i] = 1;
-    for(long long int i = 2; i*i <= MAX; i++)
+    for(long long int i = 2; i * i <= MAX; i++)
         if(A[i])
             for(long long int j = i * i; j <= MAX; j = j + i)
                 A[j] = 0;
@@ -34,39 +33,39 @@ long long int exp(long long int x, long long int y) {
     return x * z;
 }
 
-void solve(long long int n, bool A[]) {
+void solve(long long int n, bool A[], int B[]) {
     int S = 1;
     int nr = 1;
     int k = 0;
-    long long i = 2;
+    int i = 1;
 
     while(n > 1) {
 
-        if(A[i]) {
-            while(n % i == 0) {
-                n = n / i;
-                k++;
-            }
-            if(k != 0) {
-                //long long int p = round(pow(i, k + 1));
-                S = S * (exp(i, k + 1) - 1) / (i - 1) % MOD;
-                nr = nr * (k + 1);
-                k = 0;
-            }
+        while(n % B[i] == 0) { //Aflam de cate ori se divide
+            n = n / B[i];
+            k++;
+        }
+        if(k != 0) {
+            //long long int p = round(pow(i, k + 1));
+            S = S * (exp(B[i], k + 1) - 1) / (B[i] - 1) % MOD;
+            nr = nr * (k + 1);
+            k = 0;
+        }
 
-            if(n <= MAX) {
-                if(A[n]) {
-                    // long long int p = round(pow(n, 2));
-                    S = S * (exp(n, 2) - 1) / (n - 1) % MOD;
-                    nr = nr * 2;
-                    n = 1;
-                }
+        if(n <= MAX) { //Daca n e prim nu mai cautam divizori
+            if(A[n]) {
+                // long long int p = round(pow(n, 2));
+                S = S * (exp(n, 2) - 1) / (n - 1) % MOD;
+                nr = nr * 2;
+                n = 1;
             }
         }
+
         i++;
     }
 
-    if(nr == 1)
+
+    if(nr == 1) //Daca e prim
         out << 2 << " " << (n + 1) % MOD << '\n';
     else
         out << nr << " " << S << '\n';
@@ -76,13 +75,20 @@ void solve(long long int n, bool A[]) {
 
 int main() {
     bool A[MAX];
-    int t;
+    int B[100000], t, poz = 1;
     long long int n;
-    sieve(A);
-    in >> t;
-    for(int i = 1; i <= t; i++) {
+
+    sieve(A); //Marcam nr prime pana la MAX
+    for(int i = 1; i <= MAX; i++) //Punem doar nr prime in B
+        if(A[i]) {
+            B[poz] = i;
+            poz++;
+        }
+
+    in >> t; //Nr de intrebari
+    for(int i = 1; i <= t; i++) { //Solutie
         in >> n;
-        solve(n, A);
+        solve(n, A, B);
     }
 
     return 0;
