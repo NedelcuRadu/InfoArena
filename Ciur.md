@@ -1,3 +1,4 @@
+```cpp
 #include <iostream>
 #include <fstream>
 #include <math.h>
@@ -29,3 +30,4 @@ int main() {
     out << k;
     return 0;
 }
+```
