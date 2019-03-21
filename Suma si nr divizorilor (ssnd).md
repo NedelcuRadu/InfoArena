@@ -1,3 +1,4 @@
+```cpp
 #include <iostream>
 #include <fstream>
 #define MOD 9973
@@ -93,3 +94,4 @@ int main() {
 
     return 0;
 }
+```
