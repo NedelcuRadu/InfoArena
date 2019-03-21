@@ -1,3 +1,4 @@
+```cpp
 #include <iostream>
 #include <fstream>
 #define N 100010
@@ -55,3 +56,4 @@ int main() {
  
     return 0;
 }
+```
