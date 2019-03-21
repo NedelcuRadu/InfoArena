@@ -1,3 +1,4 @@
+```cpp
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -42,3 +43,4 @@ int main() {
     backtrack(1);
     return 0;
 }
+```
