@@ -1,3 +1,4 @@
+```cpp
 #include <iostream>
 #include <fstream>
 #define MOD 1999999973
@@ -30,3 +31,4 @@ int main() {
 
     return 0;
 }
+```
