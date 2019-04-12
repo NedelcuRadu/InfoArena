@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -29,4 +28,4 @@ int main() {
     out << lgput(A, B, C);
     return 0;
 }
-```
+
