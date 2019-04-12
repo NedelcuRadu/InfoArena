@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -9,13 +8,13 @@ ofstream out("combinari.out");
 
 int N,K, st[20];
 
-void afis() {
+void afis() { //Functie de afisare a solutiei
     for(int i=1; i<=K; i++)
         out<<st[i]<<" ";
         out<<'\n';
 }
 
-bool ok(int p) {
+bool ok(int p) { //Functie de verificare 
     if(p==1)
         return 1;
     if(st[p]>st[p-1])
@@ -40,4 +39,3 @@ int main() {
  backtrack(1);
     return 0;
 }
-```
