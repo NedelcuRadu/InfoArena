@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 #define MAX 50005
 using namespace std;
 ifstream in("sortaret.in");
@@ -20,7 +19,7 @@ void citire() {
     }
 }
 
-void DFS(int nod) {
+void DFS(int nod) { //Facem o parcurgere DFS si retinem nodurile
     viz[nod] = 1;
     for(int i = 0; i < A[nod].size(); i++)
         if(!viz[A[nod][i]])
