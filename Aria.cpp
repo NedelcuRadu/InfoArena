@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <fstream>
 #include <cmath>
@@ -12,7 +11,7 @@ struct punct {
     long double y;
 };
  
-long double arie(punct a, punct b) {
+long double arie(punct a, punct b) { //Returneaza aria suprafetei formate de origine si 2 puncte. (pastreaza semnul)
     return (a.x * b.y - a.y * b.x);
 }
 int main() {
@@ -25,7 +24,7 @@ int main() {
     C = A;
     for(int i = 1; i < N; i++) {
         in >> B.x >> B.y;
-        S = S + arie(A, B);
+        S = S + arie(A, B); //Adunam ariile cu semn
         A = B;
     }
     S = S + arie(A, C);
@@ -33,4 +32,3 @@ int main() {
  
     return 0;
 }
-```
