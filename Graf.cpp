@@ -1,4 +1,6 @@
-
+//Vom face cate o parcurgere in latime din cele 2 noduri date
+//Vom vedea care noduri fac parte din drumul minim
+//Din cele ce fac parte din drumul minim vedem la care se poate ajunge intr-un singur mod 
 #include <bits/stdc++.h>
 #define MAX 7510
 using namespace std;
@@ -12,7 +14,7 @@ int costX[MAX];
 int costY[MAX];
 int S[MAX];
 
-void citire()
+void citire() //Lista de adiacenta
 {
     int a,b;
     in>>N>>M>>X>>Y;
@@ -24,7 +26,7 @@ void citire()
     }
 }
 
-int BFSX(int nod)
+int BFSX(int nod) //Parcurgerea din X
 {
     memset(costX,-1,sizeof(costX));
     int L=1;
@@ -43,7 +45,7 @@ int BFSX(int nod)
 
 }
 
-int BFSY(int nod)
+int BFSY(int nod) //Parcurgerea din Y
 {
     memset(costY,-1,sizeof(costY));
     int L=1;
@@ -70,7 +72,7 @@ int main()
     int val_min=costX[Y];
 
     for(int i=1; i<=N; i++)
-        if(costX[i]+costY[i]==val_min)
+        if(costX[i]+costY[i]==val_min) //Daca nodurile fac parte din cel mai scurt drum
             viz[costX[i]]++;
             
     int vec_fin[MAX];
@@ -78,7 +80,7 @@ int main()
 
 
     for(int i=1; i<=N; i++)
-        if(costX[i]+costY[i]==val_min)
+        if(costX[i]+costY[i]==val_min) //Daca face parte din cel mai scurt drum si doar prin el se poate trece
             if(viz[costX[i]]==1 ) vec_fin[++ct]=i;
             
     out<<ct<<endl;
