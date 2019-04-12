@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <fstream>
 #include <math.h>
@@ -11,11 +10,11 @@ ofstream out("ciur.out");
 bool A[MAX];
 
 void SieveOfErathostene(long int p) {
-    for(long int i = 1; i <= p; i++)
+    for(long int i = 1; i <= p; i++) //Initializam ciurul
         A[i] = 1;
-    for(long int i = 2; i <= sqrt(p); i++)
+    for(long int i = 2; i <= sqrt(p); i++) //Nu are sens sa verificam nr mai mari decat sqrt
         if(A[i]) {
-            for(long int j = i * i; j <= p; j = j + i)
+            for(long int j = i * i; j <= p; j = j + i) // Marcam ca nefiind prime
                 A[j] = 0;
         }
 }
@@ -30,4 +29,3 @@ int main() {
     out << k;
     return 0;
 }
-```
