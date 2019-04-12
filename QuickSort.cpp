@@ -11,11 +11,11 @@ void QUICKSORT(int A[], int inf, int sup) {
   int x, i, j, t;
   i = inf;
   j = sup;
-  x = A[(i + j) / 2];
+  x = A[(i + j) / 2]; //Elementul din mijloc e pivotul
   do {
-    while ( (i < sup) && (A[i] < x) ) i++;
-    while ( (j > inf) && (A[j] > x) ) j--;
-    if ( i <= j ) {
+    while ( (i < sup) && (A[i] < x) ) i++; //Cate elemente mai mici decat pivotul sunt
+    while ( (j > inf) && (A[j] > x) ) j--; //Cate elemente mai mari decat pivotul
+    if ( i <= j ) { //Le schimbam intre ele
       t = A[i];
       A[i] = A[j];
       A[j] = t;
@@ -23,7 +23,7 @@ void QUICKSORT(int A[], int inf, int sup) {
       j--;
     }
   } while ( i <= j );
-  if ( inf < j ) QUICKSORT(inf, j);
+  if ( inf < j ) QUICKSORT(inf, j); //Sortam bucatile ramase
   if ( i < sup ) QUICKSORT(i, sup);
 }
 int main() {
