@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <fstream>
 #define MOD 9973
@@ -9,7 +8,7 @@ ofstream out("ssnd.out");
 
 
 
-void sieve(bool A[]) {
+void sieve(bool A[]) { //Ciurul lui Erathostenes
     A[1] = 0;
     for(int i = 2; i <= MAX; i++)
         A[i] = 1;
@@ -19,7 +18,7 @@ void sieve(bool A[]) {
                 A[j] = 0;
 }
 
-long long int exp(long long int x, long long int y) {
+long long int exp(long long int x, long long int y) { //Exponentiere in timp logaritmic
     long long int z = 1;
     while(y > 1) {
         if(y % 2 == 0) {
@@ -55,7 +54,7 @@ void solve(long long int n, bool A[], int B[]) {
 
         if(n <= MAX) { //Daca n e prim nu mai cautam divizori
             if(A[n]) {
-                // long long int p = round(pow(n, 2));
+                
                 S = S * (exp(n, 2) - 1) / (n - 1) % MOD;
                 nr = nr * 2;
                 n = 1;
@@ -94,4 +93,4 @@ int main() {
 
     return 0;
 }
-```
+
