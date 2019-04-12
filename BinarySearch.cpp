@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <fstream>
 #define N 100010
@@ -9,11 +8,11 @@ int A[N];
  
 int binarysearch0(int val, int n) {
     int i, step;
-    for(step=1; step<=n; step<<=1);
+    for(step=1; step<=n; step<<=1); //Incepem cu cea mai mare putere a lui 2
     for(i=0; step; step>>=1)
-        if(i+step<=n && A[i+step]<=val)
-            i+=step;
-    if(A[i]!=val)
+        if(i+step<=n && A[i+step]<=val) //Daca e in limita array-ului si mai mic sau egal decat valoarea cautata
+            i+=step; //Crestem indicele
+    if(A[i]!=val) //Daca elementul nu exista
         return -1;
     return i;
 }
@@ -56,4 +55,4 @@ int main() {
  
     return 0;
 }
-```
+
