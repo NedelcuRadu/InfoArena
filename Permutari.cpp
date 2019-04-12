@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -8,17 +7,17 @@ ofstream out("permutari.out");
 
 int N,st[10];
 
-void afis() {
+void afis() { //Functie de afisare a solutiei
     for(int i=1; i<=N; i++)
         out<<st[i]<<" ";
     out<<'\n';
 }
 
-bool ok(int k) {
-    if(k==1)
+bool ok(int k) { //Functie de verificare
+    if(k==1) //Daca e doar 1 element nu avem ce verifica
         return 1;
     else
-        for(int i=1; i<k; i++)
+        for(int i=1; i<k; i++) //Toate elementele trebuie sa fe diferite
             if(st[i]==st[k])
                 return 0;
     return 1;
