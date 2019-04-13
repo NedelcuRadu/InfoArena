@@ -23,8 +23,8 @@ void QUICKSORT(int A[], int inf, int sup) {
       j--;
     }
   } while ( i <= j );
-  if ( inf < j ) QUICKSORT(inf, j); //Sortam bucatile ramase
-  if ( i < sup ) QUICKSORT(i, sup);
+  if ( inf < j ) QUICKSORT(A, inf, j); //Sortam bucatile ramase
+  if ( i < sup ) QUICKSORT(A, i, sup);
 }
 int main() {
     int N;
