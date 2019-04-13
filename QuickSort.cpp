@@ -31,7 +31,7 @@ int main() {
     in>>N;
     for(int i=1;i<=N;i++)
         in>>A[i];
-    QUICKSORT(1,N);
+    QUICKSORT(A,1,N);
  
     for(int i=1;i<=N;i++)
         out<<A[i]<<" ";
