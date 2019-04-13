@@ -27,6 +27,7 @@ void QUICKSORT(int A[], int inf, int sup) {
   if ( i < sup ) QUICKSORT(A, i, sup);
 }
 int main() {
+  std::ios_base::sync_with_stdio(false); //Pe unele teste creste putin timpul(maxim 20ms) pe unul dintre teste il scade cu 200ms
     int N;
     in>>N;
     for(int i=1;i<=N;i++)
