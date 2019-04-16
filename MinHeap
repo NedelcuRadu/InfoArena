@@ -1,0 +1,102 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_HEAP_VALUE=10000;
+typedef struct
+{
+    int H[MAX_HEAP_VALUE];
+    int poz[MAX_HEAP_VALUE];
+    int N=0;
+    inline int father(int k)
+    {
+        return k/2;
+    }
+    inline int son_left(int k)
+    {
+        return k*2<=N?:(k*2,0);
+    }
+    inline int son_right(int k)
+    {
+        return k*2+1<=N?:(k*2+1,0);
+    }
+    int min()
+    {
+        return H[1];
+    }
+    void sift_down(int nod)
+    {
+        int son;
+        do
+        {
+            son=0;
+            if(H[son_left(nod)]<H[son_right(nod)])
+                    son=son_left(nod);
+                    else
+                    son=son_right(nod);
+                    if(H[son]>=H[nod])
+                    son=0;
+                    if(son)
+        {
+            swap(H[son],H[nod]);
+                nod=son;
+            }
+        }
+        while(son);
+    }
+    void percolate(int nod)
+    {
+        int key=H[nod];
+        while(nod>1 && key<H[father(nod)])
+        {
+            H[nod]=H[father(nod)];
+            swap(poz[nod],poz[father(nod)]);
+            nod=father(nod);
+
+        }
+        H[nod]=key;
+
+
+    }
+    void add(int val, int &N)
+    {
+        H[++N]=val;
+        poz[N]=N;
+        percolate(N);
+    }
+    void afis()
+    {
+        for(int i=1; i<=N; i++)
+            cout<<H[i]<<" ";
+        cout<<endl;
+    }
+    void afisp()
+    {
+        for(int i=1;i<=N;i++)
+            cout<<poz[i]<<" ";
+        cout<<endl;
+    }
+    void cut(int ordin, int &N)
+    {
+        H[ordin]=H[N];
+        N--;
+        if(ordin>1 && H[ordin]<H[father(ordin)])
+            percolate(ordin);
+        else
+            sift_down(ordin);
+    }
+} HEAP;
+
+int main()
+{int a;
+    HEAP X;
+    for(int i=1; i<=5; i++)
+{
+    cin>>a;
+    X.add(a,X.N);
+        X.afis();
+        X.afisp();
+    }
+    X.cut(1,X.N);
+    X.afis();
+    X.afisp();
+
+}
